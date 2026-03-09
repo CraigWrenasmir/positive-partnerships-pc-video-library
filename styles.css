@@ -58,7 +58,7 @@ textarea {
 }
 
 .hero-copy,
-.hero-panel,
+.hero-logo-panel,
 .library-panel {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -87,20 +87,16 @@ textarea {
   pointer-events: none;
 }
 
-.hero-panel {
+.hero-logo-panel {
   padding: 26px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background:
-    linear-gradient(180deg, rgba(51, 0, 68, 0.96), rgba(113, 45, 144, 0.92)),
-    var(--surface);
-  color: #fff;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(241, 232, 248, 0.88));
 }
 
 .eyebrow,
-.transcript-kicker,
-.hero-panel-label {
+.transcript-kicker {
   margin: 0 0 10px;
   text-transform: uppercase;
   letter-spacing: 0.16em;
@@ -142,28 +138,10 @@ h1 {
   font-size: 1.02rem;
 }
 
-.hero-stats {
-  display: grid;
-  gap: 12px;
-}
-
-.stat-card {
-  padding: 16px 18px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.stat-card strong {
+.hero-logo {
   display: block;
-  font-size: 1.55rem;
-  margin-bottom: 4px;
-}
-
-.stat-card span {
-  color: rgba(255, 255, 255, 0.82);
-  line-height: 1.5;
-  font-size: 0.95rem;
+  width: min(100%, 360px);
+  height: auto;
 }
 
 .library-panel {
@@ -533,13 +511,13 @@ h1 {
   }
 
   .hero-copy,
-  .hero-panel,
+  .hero-logo-panel,
   .library-panel {
     border-radius: 24px;
   }
 
   .hero-copy,
-  .hero-panel,
+  .hero-logo-panel,
   .library-panel,
   .session-header,
   .session-cards,

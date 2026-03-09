@@ -266,7 +266,6 @@ const contentConfig = {
 };
 
 const elements = {
-  heroStats: document.getElementById("hero-stats"),
   workshopSwitch: document.getElementById("workshop-switch"),
   toolbarMeta: document.getElementById("toolbar-meta"),
   videoList: document.getElementById("video-list"),
@@ -321,24 +320,6 @@ function makeTranscriptNote(text) {
   note.className = "transcript-note";
   note.textContent = text;
   return note;
-}
-
-function renderHeroStats() {
-  const workshop = activeWorkshop();
-  const transcriptCount = workshop.videos.filter((entry) => entry.transcriptStatus === "present").length;
-  const sessionCount = (sessionConfig[workshop.id] || []).length;
-
-  elements.heroStats.innerHTML = "";
-  [
-    { value: workshop.videos.length, label: "videos currently mapped" },
-    { value: transcriptCount, label: "transcripts available in-page" },
-    { value: sessionCount, label: "session groups in this workshop" },
-  ].forEach((item) => {
-    const card = document.createElement("div");
-    card.className = "stat-card";
-    card.innerHTML = `<strong>${item.value}</strong><span>${item.label}</span>`;
-    elements.heroStats.appendChild(card);
-  });
 }
 
 function renderWorkshopSwitch() {
@@ -518,7 +499,6 @@ function renderVideoList() {
 }
 
 function render() {
-  renderHeroStats();
   renderWorkshopSwitch();
   renderToolbarMeta();
   renderVideoList();
