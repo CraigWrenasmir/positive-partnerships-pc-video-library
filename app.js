@@ -69,7 +69,7 @@ const sessionConfig = {
     },
     {
       title: "Session 5: Understanding Behaviour",
-      items: [{ key: "Dan Siegels Hand Model of the Brain" }, { key: "Making observations" }],
+      items: [{ key: "Dan Siegel's Hand Model of the Brain" }, { key: "Making observations" }],
     },
     {
       title: "Session 6: Working in Partnerships",
@@ -88,7 +88,7 @@ const contentConfig = {
       "Thomas Kuzma reflects on the language autistic people use to describe themselves and why identity-first versus person-first language matters.",
     summary: [
       "Explores how language shapes identity, dignity, and self-understanding.",
-      "Contrasts identity-first and person-first language from an autistic perspective.",
+      "Contrasts identity-first language (e.g. 'autistic person') and person-first language (e.g. 'person with autism') from an autistic perspective.",
       "Encourages listening to individual preference rather than assuming one correct term for everyone.",
     ],
   },
@@ -130,10 +130,10 @@ const contentConfig = {
   },
   Communication: {
     brief:
-      "A montage of lived experience perspectives shows different ways autistic young people communicate, including speech, AAC, and non-traditional communication styles.",
+      "A montage of lived experience perspectives shows different ways autistic young people communicate, including speech, augmentative and alternative communication (AAC), and non-verbal or indirect communication styles.",
     summary: [
       "Shows that communication is diverse and cannot be reduced to spoken language alone.",
-      "Introduces AAC, processing differences, and misunderstandings in social interaction.",
+      "Introduces augmentative and alternative communication (AAC — tools and methods that support or replace speech, such as picture boards, speech-generating devices, or apps), processing differences, and misunderstandings in social interaction.",
       "Encourages communication support that is flexible, respectful, and collaborative.",
     ],
   },
@@ -166,11 +166,11 @@ const contentConfig = {
   },
   Strategies: {
     brief:
-      "Autistic young people describe strategies and supports that help them participate, regulate, communicate, and manage day-to-day life.",
+      "Autistic young people describe strategies and supports that help them participate, self-regulate (manage their emotions and responses), communicate, and manage day-to-day life.",
     summary: [
       "Provides concrete examples of supports that make a positive difference.",
       "Shows that useful strategies are individual and context-dependent.",
-      "Encourages participants to match strategies to the person rather than rely on one-size-fits-all ideas.",
+      "Encourages participants to match strategies to the person rather than apply the same approach to everyone.",
     ],
   },
   "What can sensory processing differences feel like": {
@@ -220,38 +220,38 @@ const contentConfig = {
   },
   "Disability Standards for Education": {
     brief:
-      "This short explainer introduces the legal obligations schools have under the Disability Standards for Education and why they matter in practice.",
+      "This short explainer introduces the legal obligations schools have under the Disability Standards for Education (DSE, 2005) and why they matter in practice.",
     summary: [
       "Explains that the Standards are legal responsibilities, not optional supports.",
-      "Highlights consultation, reasonable adjustments, and protection from discrimination.",
+      "Highlights consultation, reasonable adjustments (changes schools must make to give students with disability fair access to education), and protection from discrimination.",
       "Provides a practical starting point for understanding rights and responsibilities in education.",
     ],
   },
   "DSE roles and expectations": {
     brief:
-      "An example-based clip shows how schools and families can work together in ways that align with the Disability Standards and the NCCD approach.",
+      "An example-based clip shows how schools and families can work together in ways that align with the Disability Standards for Education (DSE) and the NCCD (Nationally Consistent Collection of Data on School Students with Disability) documentation approach.",
     summary: [
       "Demonstrates partnership in action rather than only describing the law.",
       "Shows the role of communication, consultation, and shared understanding.",
-      "Helps participants connect legal obligations to everyday school practice.",
+      "Helps participants connect legal obligations under the DSE to everyday school practice.",
     ],
   },
   "Moving Forward": {
     brief:
-      "A family-school clip closes the session by focusing on practical partnership, shared goals, and what effective collaboration can look like going forward.",
+      "A family and school team close the session by reflecting on what genuine collaboration looks like in practice — shared goals, open communication, and a continued focus on the young person.",
     summary: [
       "Reinforces the importance of ongoing collaboration between home and school.",
-      "Highlights communication, trust, and shared focus on the young person.",
-      "Leaves participants with a practical picture of positive partnership in action.",
+      "Highlights communication, trust, and a shared focus on the young person's needs and goals.",
+      "Leaves participants with a concrete picture of positive partnership in action.",
     ],
   },
-  "Dan Siegels Hand Model of the Brain": {
+  "Dan Siegel's Hand Model of the Brain": {
     brief:
-      "This explainer uses Dan Siegel's hand model of the brain to show how heightened emotion can affect thinking, regulation, and behaviour.",
+      "This explainer uses Dan Siegel's hand model of the brain — a visual tool using the hand to represent brain structures — to show how heightened emotion can affect thinking, self-regulation, and behaviour.",
     summary: [
-      "Introduces a simple visual model for understanding regulation and stress.",
+      "Introduces a simple visual model for understanding stress and emotional regulation (the ability to manage one's feelings and responses).",
       "Shows how emotional intensity can reduce access to thinking and self-management.",
-      "Supports more compassionate responses to behaviour during dysregulation.",
+      "Supports more compassionate responses to behaviour during dysregulation (when a person is overwhelmed and unable to self-regulate).",
     ],
   },
   "Making observations": {
