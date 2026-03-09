@@ -2,16 +2,14 @@ const state = {
   dataset: null,
   activeWorkshopId: "1-day-pc",
   activeVideoId: null,
+  activePanel: null,
 };
 
 const sessionConfig = {
   "1-day-pc": [
     {
       title: "Session 1: Welcome and Introductions",
-      items: [
-        { key: "Language and Autism" },
-        { key: "Having a say" },
-      ],
+      items: [{ key: "Language and Autism" }, { key: "Having a say" }],
     },
     {
       title: "Session 2: Diversity of autism",
@@ -38,19 +36,13 @@ const sessionConfig = {
     },
     {
       title: "Session 4: Working in Partnerships",
-      items: [
-        { key: "Disability Standards for Education" },
-        { key: "Moving Forward" },
-      ],
+      items: [{ key: "Disability Standards for Education" }, { key: "Moving Forward" }],
     },
   ],
   "2-day-pc": [
     {
       title: "Session 1: Welcome and Introductions",
-      items: [
-        { key: "Language and Autism" },
-        { key: "Having a say" },
-      ],
+      items: [{ key: "Language and Autism" }, { key: "Having a say" }],
     },
     {
       title: "Session 2: Diversity of autism",
@@ -77,10 +69,7 @@ const sessionConfig = {
     },
     {
       title: "Session 5: Understanding Behaviour",
-      items: [
-        { key: "Dan Siegels Hand Model of the Brain" },
-        { key: "Making observations" },
-      ],
+      items: [{ key: "Dan Siegels Hand Model of the Brain" }, { key: "Making observations" }],
     },
     {
       title: "Session 6: Working in Partnerships",
@@ -91,6 +80,189 @@ const sessionConfig = {
       ],
     },
   ],
+};
+
+const contentConfig = {
+  "Language and Autism": {
+    brief:
+      "Thomas Kuzma reflects on the language autistic people use to describe themselves and why identity-first versus person-first language matters.",
+    summary: [
+      "Explores how language shapes identity, dignity, and self-understanding.",
+      "Contrasts identity-first and person-first language from an autistic perspective.",
+      "Encourages listening to individual preference rather than assuming one correct term for everyone.",
+    ],
+  },
+  "Having a say": {
+    brief:
+      "This clip focuses on student voice and the importance of understanding how autistic young people communicate what helps them learn best.",
+    summary: [
+      "Centres the young person as an active contributor to learning decisions.",
+      "Highlights the value of asking how a student learns rather than making assumptions.",
+      "Supports stronger collaboration between families, students, and educators.",
+    ],
+  },
+  "Strengths and interests": {
+    brief:
+      "Young people and families talk about strengths and interests as meaningful parts of identity, wellbeing, and engagement in daily life.",
+    summary: [
+      "Moves the conversation away from deficits and toward strengths.",
+      "Shows how interests can support confidence, belonging, and learning.",
+      "Reinforces that strengths may look different across individuals and contexts.",
+    ],
+  },
+  "Strengths and interests high school": {
+    brief:
+      "Sam reflects on strengths and interests in a high school context, showing how they can shape motivation, identity, and school experiences.",
+    summary: [
+      "Connects strengths and interests to secondary school engagement.",
+      "Shows how interests can be misunderstood if adults focus only on compliance or curriculum.",
+      "Encourages a more respectful, strengths-based response to adolescent identity and motivation.",
+    ],
+  },
+  "Connections to culture and community": {
+    brief:
+      "Hao shares how sport, music, dance, and community connections contribute to identity, belonging, and wellbeing.",
+    summary: [
+      "Emphasises that identity is shaped by more than disability or diagnosis.",
+      "Highlights the importance of cultural, family, and community connections.",
+      "Encourages educators and families to notice the whole person, not just support needs.",
+    ],
+  },
+  Communication: {
+    brief:
+      "A montage of lived experience perspectives shows different ways autistic young people communicate, including speech, AAC, and non-traditional communication styles.",
+    summary: [
+      "Shows that communication is diverse and cannot be reduced to spoken language alone.",
+      "Introduces AAC, processing differences, and misunderstandings in social interaction.",
+      "Encourages communication support that is flexible, respectful, and collaborative.",
+    ],
+  },
+  "Executive Functioning": {
+    brief:
+      "This explainer introduces executive functioning as the set of mental processes that help people organise, plan, remember, and manage actions.",
+    summary: [
+      "Defines executive functioning in practical, everyday terms.",
+      "Links executive functioning to organisation, planning, memory, and self-management.",
+      "Helps participants recognise that these processes can affect participation across school and home life.",
+    ],
+  },
+  Dean: {
+    brief:
+      "Dean shares a lived experience perspective on executive functioning and how these challenges can affect daily expectations and routines.",
+    summary: [
+      "Adds a personal perspective to the concept of executive functioning.",
+      "Shows how invisible cognitive demands can shape everyday experiences.",
+      "Encourages empathy for behaviours that may otherwise be misread as unwillingness or defiance.",
+    ],
+  },
+  "Self-care and independence skills": {
+    brief:
+      "Adon talks about self-care and independence skills, drawing attention to the hidden demands involved in everyday tasks.",
+    summary: [
+      "Shows that everyday independence often requires planning, sequencing, and support.",
+      "Highlights how self-care expectations can be stressful or uneven across contexts.",
+      "Encourages realistic and individualised support rather than assumptions about capability.",
+    ],
+  },
+  Strategies: {
+    brief:
+      "Autistic young people describe strategies and supports that help them participate, regulate, communicate, and manage day-to-day life.",
+    summary: [
+      "Provides concrete examples of supports that make a positive difference.",
+      "Shows that useful strategies are individual and context-dependent.",
+      "Encourages participants to match strategies to the person rather than rely on one-size-fits-all ideas.",
+    ],
+  },
+  "What can sensory processing differences feel like": {
+    brief:
+      "This clip offers a first-person sensory perspective, helping participants imagine how everyday environments can feel intense, beautiful, or overwhelming.",
+    summary: [
+      "Introduces sensory processing through lived experience rather than theory alone.",
+      "Shows that sensory experiences can be heightened, layered, and deeply personal.",
+      "Builds empathy for how ordinary settings may feel very different to autistic people.",
+    ],
+  },
+  "Judy Endow: Sensory Processing": {
+    brief:
+      "Judy Endow provides a concise sensory processing perspective that helps explain why autistic responses to the environment can look so different from person to person.",
+    summary: [
+      "Frames sensory processing as a central part of lived experience, not a side issue.",
+      "Helps participants understand why responses to sound, light, movement, or touch can vary widely.",
+      "Supports a more respectful interpretation of behaviour linked to sensory need.",
+    ],
+  },
+  "Over and under sensitive": {
+    brief:
+      "This short analogy-based clip explains how people may respond differently when sensory systems are over-responsive, under-responsive, or inconsistent.",
+    summary: [
+      "Introduces the idea that sensory profiles are not all the same.",
+      "Explains that sensitivity can shift across senses and situations.",
+      "Helps participants move beyond simplistic ideas about sensory behaviour.",
+    ],
+  },
+  "Sensory processing and context": {
+    brief:
+      "This video connects sensory experiences to context, showing how the same person may respond very differently depending on the environment, demands, and level of safety.",
+    summary: [
+      "Emphasises that sensory processing is shaped by context, not just by the individual.",
+      "Shows how environment, stress, and demands can change sensory tolerance.",
+      "Encourages more thoughtful adjustment of spaces, routines, and expectations.",
+    ],
+  },
+  "Sensory solutions and strategies": {
+    brief:
+      "Autistic lived experience perspectives are used to explore practical sensory supports and how thoughtful adjustments can make environments more workable.",
+    summary: [
+      "Focuses on practical supports rather than expecting the person to simply cope.",
+      "Highlights that sensory strategies should be collaborative and individualised.",
+      "Connects adjustments to access, comfort, regulation, and participation.",
+    ],
+  },
+  "Disability Standards for Education": {
+    brief:
+      "This short explainer introduces the legal obligations schools have under the Disability Standards for Education and why they matter in practice.",
+    summary: [
+      "Explains that the Standards are legal responsibilities, not optional supports.",
+      "Highlights consultation, reasonable adjustments, and protection from discrimination.",
+      "Provides a practical starting point for understanding rights and responsibilities in education.",
+    ],
+  },
+  "DSE roles and expectations": {
+    brief:
+      "An example-based clip shows how schools and families can work together in ways that align with the Disability Standards and the NCCD approach.",
+    summary: [
+      "Demonstrates partnership in action rather than only describing the law.",
+      "Shows the role of communication, consultation, and shared understanding.",
+      "Helps participants connect legal obligations to everyday school practice.",
+    ],
+  },
+  "Moving Forward": {
+    brief:
+      "A family-school clip closes the session by focusing on practical partnership, shared goals, and what effective collaboration can look like going forward.",
+    summary: [
+      "Reinforces the importance of ongoing collaboration between home and school.",
+      "Highlights communication, trust, and shared focus on the young person.",
+      "Leaves participants with a practical picture of positive partnership in action.",
+    ],
+  },
+  "Dan Siegels Hand Model of the Brain": {
+    brief:
+      "This explainer uses Dan Siegel's hand model of the brain to show how heightened emotion can affect thinking, regulation, and behaviour.",
+    summary: [
+      "Introduces a simple visual model for understanding regulation and stress.",
+      "Shows how emotional intensity can reduce access to thinking and self-management.",
+      "Supports more compassionate responses to behaviour during dysregulation.",
+    ],
+  },
+  "Making observations": {
+    brief:
+      "This clip demonstrates how careful observation can help adults understand behaviour patterns and the conditions in which behaviours are more or less likely to happen.",
+    summary: [
+      "Promotes observation before interpretation or judgment.",
+      "Encourages looking at triggers, context, and patterns around behaviour.",
+      "Supports more informed, less reactive planning for behaviour support.",
+    ],
+  },
 };
 
 const elements = {
@@ -125,18 +297,23 @@ function sessionKeyForEntry(entry, video) {
   return video.title;
 }
 
+function contentFor(key) {
+  return (
+    contentConfig[key] || {
+      brief: "This video supports the workshop topic through a short lived experience or explainer clip.",
+      summary: [
+        "Introduces a key concept from the session.",
+        "Provides context before reading the full transcript.",
+      ],
+    }
+  );
+}
+
 function makeBadge(label, className) {
   const badge = document.createElement("span");
   badge.className = `badge ${className}`;
   badge.textContent = label;
   return badge;
-}
-
-function makeNote(text) {
-  const note = document.createElement("p");
-  note.className = "session-note";
-  note.textContent = text;
-  return note;
 }
 
 function makeTranscriptNote(text) {
@@ -152,7 +329,6 @@ function renderHeroStats() {
   const sessionCount = (sessionConfig[workshop.id] || []).length;
 
   elements.heroStats.innerHTML = "";
-
   [
     { value: workshop.videos.length, label: "videos currently mapped" },
     { value: transcriptCount, label: "transcripts available in-page" },
@@ -175,6 +351,7 @@ function renderWorkshopSwitch() {
     button.addEventListener("click", () => {
       state.activeWorkshopId = workshop.id;
       state.activeVideoId = null;
+      state.activePanel = null;
       render();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
@@ -184,42 +361,54 @@ function renderWorkshopSwitch() {
 
 function renderToolbarMeta() {
   const workshop = activeWorkshop();
-  const transcriptCount = workshop.videos.filter((entry) => entry.transcriptStatus === "present").length;
-  elements.toolbarMeta.textContent = `${workshop.videos.length} videos in scope • ${transcriptCount} transcripts ready`;
+  elements.toolbarMeta.textContent = `${workshop.videos.length} videos in scope • browse by session, then open a summary or transcript`;
 }
 
-function renderTranscript(drawer, item, entry, video, workshopName) {
-  const transcriptButton = item.querySelector(".transcript-button");
-  const isOpen = state.activeVideoId === video.id && video.transcript;
+function renderDrawer(item, entry, video, workshopName, itemConfig) {
+  const drawer = item.querySelector(".transcript-drawer");
+  const isOpen = state.activeVideoId === video.id && Boolean(state.activePanel);
 
-  transcriptButton.textContent = isOpen ? "Hide Transcript" : "Open Transcript";
-  transcriptButton.setAttribute("aria-expanded", String(Boolean(isOpen)));
+  item.classList.toggle("is-open", isOpen);
+  drawer.hidden = !isOpen;
+  if (!isOpen) return;
 
-  if (!isOpen) {
-    drawer.hidden = true;
+  const content = contentFor(itemConfig.key);
+  item.querySelector(".transcript-kicker").textContent = workshopName;
+  item.querySelector(".transcript-title").textContent = itemConfig.label || video.title;
+  item.querySelector(".transcript-meta").textContent = [
+    entry.slideTitle.toUpperCase(),
+    video.duration ? `Duration ${video.duration}` : "Duration TBC",
+    state.activePanel === "summary" ? "Summary" : "Transcript",
+  ].join(" • ");
+
+  const body = item.querySelector(".drawer-body");
+  body.innerHTML = "";
+
+  if (state.activePanel === "summary") {
+    const intro = document.createElement("p");
+    intro.className = "transcript-note";
+    intro.textContent = content.brief;
+    body.appendChild(intro);
+
+    const list = document.createElement("ul");
+    list.className = "summary-list";
+    content.summary.forEach((point) => {
+      const bullet = document.createElement("li");
+      bullet.textContent = point;
+      list.appendChild(bullet);
+    });
+    body.appendChild(list);
     return;
   }
 
-  drawer.hidden = false;
-  item.classList.add("is-open");
+  if (entry.notes) body.appendChild(makeTranscriptNote(entry.notes));
+  if (entry.matchNote) body.appendChild(makeTranscriptNote(entry.matchNote));
 
-  item.querySelector(".transcript-kicker").textContent = workshopName;
-  item.querySelector(".transcript-title").textContent = video.title;
-  item.querySelector(".transcript-meta").textContent = [
-    video.speakerOrSource,
-    video.duration,
-    video.transcriptFile,
-  ]
-    .filter(Boolean)
-    .join(" • ");
+  if (!video.transcript) {
+    body.appendChild(makeTranscriptNote("Transcript not yet loaded for this clip."));
+    return;
+  }
 
-  const transcriptNotes = item.querySelector(".transcript-notes");
-  transcriptNotes.innerHTML = "";
-  if (entry.notes) transcriptNotes.appendChild(makeTranscriptNote(entry.notes));
-  if (entry.matchNote) transcriptNotes.appendChild(makeTranscriptNote(entry.matchNote));
-
-  const transcriptBody = item.querySelector(".transcript-body");
-  transcriptBody.innerHTML = "";
   video.transcript.blocks.forEach((block) => {
     const wrapper = document.createElement("section");
     wrapper.className = "transcript-block";
@@ -234,43 +423,57 @@ function renderTranscript(drawer, item, entry, video, workshopName) {
 
     wrapper.appendChild(speaker);
     wrapper.appendChild(paragraph);
-    transcriptBody.appendChild(wrapper);
+    body.appendChild(wrapper);
   });
 }
 
 function renderVideoRow(itemConfig, entry, video, workshopName) {
   const item = elements.rowTemplate.content.firstElementChild.cloneNode(true);
-  const drawer = item.querySelector(".transcript-drawer");
+  const content = contentFor(itemConfig.key);
   const isTranscriptReady = video.transcriptStatus === "present" && Boolean(video.transcript);
+  const isSummaryOpen = state.activeVideoId === video.id && state.activePanel === "summary";
+  const isTranscriptOpen = state.activeVideoId === video.id && state.activePanel === "transcript";
 
-  item.querySelector(".video-kicker").textContent = entry.slideTitle;
   item.querySelector(".video-title").textContent = itemConfig.label || video.title;
-  item.querySelector(".video-source").textContent = video.speakerOrSource || "Speaker/source not set";
-  item.querySelector(".duration-pill").textContent = video.duration || "Duration n/a";
+  item.querySelector(".video-slide").textContent = entry.slideTitle.toUpperCase();
+  item.querySelector(".video-brief").textContent = content.brief;
+  item.querySelector(".duration-pill").textContent = video.duration ? `Duration ${video.duration}` : "Duration TBC";
 
-  const badges = item.querySelector(".video-badges");
+  const heading = item.querySelector(".video-heading");
   if (itemConfig.optional) {
-    badges.appendChild(makeBadge("Optional", "optional"));
+    heading.appendChild(makeBadge("Optional", "optional"));
   }
-  badges.appendChild(makeBadge(isTranscriptReady ? "Transcript ready" : "Transcript missing", isTranscriptReady ? "available" : "missing"));
 
-  const notes = item.querySelector(".video-notes");
-  if (entry.notes) notes.appendChild(makeNote(entry.notes));
-  if (entry.matchNote) notes.appendChild(makeNote(entry.matchNote));
-
+  const summaryButton = item.querySelector(".summary-button");
   const transcriptButton = item.querySelector(".transcript-button");
+
+  summaryButton.disabled = false;
+  summaryButton.textContent = isSummaryOpen ? "Hide Summary" : "Summary";
+  summaryButton.setAttribute("aria-expanded", String(isSummaryOpen));
+  summaryButton.addEventListener("click", () => {
+    const shouldClose = isSummaryOpen;
+    state.activeVideoId = shouldClose ? null : video.id;
+    state.activePanel = shouldClose ? null : "summary";
+    render();
+  });
+
   transcriptButton.disabled = !isTranscriptReady;
+  transcriptButton.textContent = isTranscriptOpen ? "Hide Transcript" : "Transcript";
+  transcriptButton.setAttribute("aria-expanded", String(isTranscriptOpen));
   transcriptButton.addEventListener("click", () => {
-    state.activeVideoId = state.activeVideoId === video.id ? null : video.id;
+    const shouldClose = isTranscriptOpen;
+    state.activeVideoId = shouldClose ? null : video.id;
+    state.activePanel = shouldClose ? null : "transcript";
     render();
   });
 
   item.querySelector(".close-drawer").addEventListener("click", () => {
     state.activeVideoId = null;
+    state.activePanel = null;
     render();
   });
 
-  renderTranscript(drawer, item, entry, video, workshopName);
+  renderDrawer(item, entry, video, workshopName, itemConfig);
   return item;
 }
 
