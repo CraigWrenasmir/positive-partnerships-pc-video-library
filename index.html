@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Positive Partnerships Video Library</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">Positive Partnerships</p>
+        <h1>PC Workshop Video Library</h1>
+        <p class="intro">
+          Browse the current transcript-backed video library for <strong>1 Day PC</strong> and
+          <strong>2 Day PC</strong>. Open a transcript directly in the page and keep the dataset
+          ready for later summary work.
+        </p>
+      </header>
+
+      <main class="layout">
+        <section class="library-panel">
+          <div class="toolbar">
+            <div class="workshop-switch" id="workshop-switch"></div>
+            <div class="toolbar-meta" id="toolbar-meta"></div>
+          </div>
+
+          <div class="video-list" id="video-list"></div>
+        </section>
+
+        <aside class="transcript-panel" id="transcript-panel">
+          <div class="transcript-empty" id="transcript-empty">
+            <p>Select a transcript to view it here.</p>
+          </div>
+
+          <div class="transcript-view hidden" id="transcript-view">
+            <div class="transcript-header">
+              <div>
+                <p class="transcript-kicker" id="transcript-workshop"></p>
+                <h2 id="transcript-title"></h2>
+                <p class="transcript-meta" id="transcript-meta"></p>
+              </div>
+              <button class="ghost-button" id="close-transcript" type="button">Close</button>
+            </div>
+
+            <div class="transcript-notes" id="transcript-notes"></div>
+            <div class="transcript-body" id="transcript-body"></div>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <template id="video-card-template">
+      <article class="video-card">
+        <div class="video-card-top">
+          <div>
+            <p class="video-card-kicker"></p>
+            <h3></h3>
+          </div>
+          <span class="duration-pill"></span>
+        </div>
+        <p class="speaker-line"></p>
+        <p class="slide-line"></p>
+        <div class="card-notes"></div>
+        <div class="card-actions">
+          <button class="primary-button transcript-button" type="button">Transcript</button>
+          <button class="secondary-button summary-button" type="button" disabled>Summary Soon</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
