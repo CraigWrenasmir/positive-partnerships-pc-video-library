@@ -3,19 +3,28 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Positive Partnerships Video Library</title>
+    <title>Positive Partnerships PC Video Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <div class="page-shell">
       <header class="hero">
-        <p class="eyebrow">Positive Partnerships</p>
-        <h1>PC Workshop Video Library</h1>
-        <p class="intro">
-          Browse the current transcript-backed video library for <strong>1 Day PC</strong> and
-          <strong>2 Day PC</strong>. Open a transcript directly in the page and keep the dataset
-          ready for later summary work.
-        </p>
+        <div class="hero-copy">
+          <p class="eyebrow">Positive Partnerships</p>
+          <h1>PC Workshop Video Library</h1>
+          <p class="intro">
+            A transcript-first library for the <strong>1 Day PC</strong> and <strong>2 Day PC</strong>
+            workshops. Browse by session, open transcripts inline, and keep the content easy to scan for
+            future translation work.
+          </p>
+        </div>
+        <div class="hero-panel">
+          <p class="hero-panel-label">Current Scope</p>
+          <div class="hero-stats" id="hero-stats"></div>
+        </div>
       </header>
 
       <main class="library-panel">
@@ -24,34 +33,38 @@
           <div class="toolbar-meta" id="toolbar-meta"></div>
         </div>
 
-        <div class="video-list" id="video-list"></div>
+        <div class="session-list" id="video-list"></div>
       </main>
     </div>
 
-    <template id="video-card-template">
-      <article class="video-card">
-        <div class="video-card-top">
-          <div>
-            <p class="video-card-kicker"></p>
-            <h3></h3>
+    <template id="video-row-template">
+      <article class="video-row">
+        <div class="video-row-main">
+          <div class="video-copy">
+            <div class="video-heading">
+              <p class="video-kicker"></p>
+              <h3 class="video-title"></h3>
+              <div class="video-badges"></div>
+            </div>
+            <p class="video-source"></p>
+            <div class="video-notes"></div>
           </div>
-          <span class="duration-pill"></span>
+
+          <div class="video-actions">
+            <span class="duration-pill"></span>
+            <button class="transcript-button" type="button">Open Transcript</button>
+            <button class="summary-button" type="button" disabled>Summary Soon</button>
+          </div>
         </div>
-        <p class="speaker-line"></p>
-        <p class="slide-line"></p>
-        <div class="card-notes"></div>
-        <div class="card-actions">
-          <button class="primary-button transcript-button" type="button">Transcript</button>
-          <button class="secondary-button summary-button" type="button" disabled>Summary Soon</button>
-        </div>
-        <div class="accordion-panel hidden">
-          <div class="accordion-header">
+
+        <div class="transcript-drawer" hidden>
+          <div class="transcript-head">
             <div>
               <p class="transcript-kicker"></p>
-              <h4 class="accordion-title"></h4>
+              <h4 class="transcript-title"></h4>
               <p class="transcript-meta"></p>
             </div>
-            <button class="ghost-button close-accordion-button" type="button">Close</button>
+            <button class="close-drawer" type="button">Close</button>
           </div>
           <div class="transcript-notes"></div>
           <div class="transcript-body"></div>

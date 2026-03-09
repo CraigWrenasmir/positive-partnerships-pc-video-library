@@ -8,80 +8,97 @@ const sessionConfig = {
   "1-day-pc": [
     {
       title: "Session 1: Welcome and Introductions",
-      items: ["Language and Autism", "Having a say"],
+      items: [
+        { key: "Language and Autism" },
+        { key: "Having a say" },
+      ],
     },
     {
       title: "Session 2: Diversity of autism",
       items: [
-        "Strengths and interests",
-        "Strengths and interests high school",
-        "Connections to culture and community",
-        "Communication",
-        "Executive Functioning",
-        "Dean",
-        "Self-care and independence skills",
-        "Strategies",
+        { key: "Strengths and interests" },
+        { key: "Strengths and interests high school", label: "Strengths and Interests (High School)", optional: true },
+        { key: "Connections to culture and community" },
+        { key: "Communication" },
+        { key: "Executive Functioning" },
+        { key: "Dean", label: "Dean" },
+        { key: "Self-care and independence skills", label: "Self-Care and Independence Skills" },
+        { key: "Strategies" },
       ],
     },
     {
       title: "Session 3: Sensory Processing",
       items: [
-        "What can sensory processing differences feel like",
-        "Judy Endow: Sensory processing",
-        "Over and under sensitive",
-        "Sensory processing and context",
-        "Sensory solutions and strategies",
+        { key: "What can sensory processing differences feel like" },
+        { key: "Judy Endow: Sensory Processing" },
+        { key: "Over and under sensitive" },
+        { key: "Sensory processing and context" },
+        { key: "Sensory solutions and strategies" },
       ],
     },
     {
       title: "Session 4: Working in Partnerships",
-      items: ["Disability Standards for Education", "Moving Forward"],
+      items: [
+        { key: "Disability Standards for Education" },
+        { key: "Moving Forward" },
+      ],
     },
   ],
   "2-day-pc": [
     {
       title: "Session 1: Welcome and Introductions",
-      items: ["Language and Autism", "Having a say"],
+      items: [
+        { key: "Language and Autism" },
+        { key: "Having a say" },
+      ],
     },
     {
       title: "Session 2: Diversity of autism",
       items: [
-        "Strengths and interests",
-        "Strengths and interests high school",
-        "Connections to culture and community",
-        "Communication",
-        "Executive Functioning",
-        "Dean",
-        "Self-care and independence skills",
-        "Strategies",
+        { key: "Strengths and interests" },
+        { key: "Strengths and interests high school", label: "Strengths and Interests (High School)", optional: true },
+        { key: "Connections to culture and community" },
+        { key: "Communication" },
+        { key: "Executive Functioning" },
+        { key: "Dean", label: "Dean" },
+        { key: "Self-care and independence skills", label: "Self-care and Independence" },
+        { key: "Strategies" },
       ],
     },
     {
       title: "Session 3: Sensory Processing",
       items: [
-        "What can sensory processing differences feel like",
-        "Judy Endow: Sensory Processing",
-        "Over and under sensitive",
-        "Sensory processing and context",
-        "Sensory solutions and strategies",
+        { key: "What can sensory processing differences feel like" },
+        { key: "Judy Endow: Sensory Processing" },
+        { key: "Over and under sensitive" },
+        { key: "Sensory processing and context" },
+        { key: "Sensory solutions and strategies" },
       ],
     },
     {
       title: "Session 5: Understanding Behaviour",
-      items: ["Dan Siegels Hand Model of the Brain", "Making observations"],
+      items: [
+        { key: "Dan Siegels Hand Model of the Brain" },
+        { key: "Making observations" },
+      ],
     },
     {
       title: "Session 6: Working in Partnerships",
-      items: ["Disability Standards for Education", "DSE roles and expectations", "Moving Forward"],
+      items: [
+        { key: "Disability Standards for Education" },
+        { key: "DSE roles and expectations", label: "DSE Roles and Expectations" },
+        { key: "Moving Forward" },
+      ],
     },
   ],
 };
 
 const elements = {
+  heroStats: document.getElementById("hero-stats"),
   workshopSwitch: document.getElementById("workshop-switch"),
   toolbarMeta: document.getElementById("toolbar-meta"),
   videoList: document.getElementById("video-list"),
-  cardTemplate: document.getElementById("video-card-template"),
+  rowTemplate: document.getElementById("video-row-template"),
 };
 
 function byId(videoId) {
@@ -90,10 +107,6 @@ function byId(videoId) {
 
 function activeWorkshop() {
   return state.dataset.workshops.find((workshop) => workshop.id === state.activeWorkshopId);
-}
-
-function videoForWorkshop(entry) {
-  return byId(entry.videoId);
 }
 
 function sessionKeyForEntry(entry, video) {
@@ -112,6 +125,46 @@ function sessionKeyForEntry(entry, video) {
   return video.title;
 }
 
+function makeBadge(label, className) {
+  const badge = document.createElement("span");
+  badge.className = `badge ${className}`;
+  badge.textContent = label;
+  return badge;
+}
+
+function makeNote(text) {
+  const note = document.createElement("p");
+  note.className = "session-note";
+  note.textContent = text;
+  return note;
+}
+
+function makeTranscriptNote(text) {
+  const note = document.createElement("p");
+  note.className = "transcript-note";
+  note.textContent = text;
+  return note;
+}
+
+function renderHeroStats() {
+  const workshop = activeWorkshop();
+  const transcriptCount = workshop.videos.filter((entry) => entry.transcriptStatus === "present").length;
+  const sessionCount = (sessionConfig[workshop.id] || []).length;
+
+  elements.heroStats.innerHTML = "";
+
+  [
+    { value: workshop.videos.length, label: "videos currently mapped" },
+    { value: transcriptCount, label: "transcripts available in-page" },
+    { value: sessionCount, label: "session groups in this workshop" },
+  ].forEach((item) => {
+    const card = document.createElement("div");
+    card.className = "stat-card";
+    card.innerHTML = `<strong>${item.value}</strong><span>${item.label}</span>`;
+    elements.heroStats.appendChild(card);
+  });
+}
+
 function renderWorkshopSwitch() {
   elements.workshopSwitch.innerHTML = "";
   state.dataset.workshops.forEach((workshop) => {
@@ -123,6 +176,7 @@ function renderWorkshopSwitch() {
       state.activeWorkshopId = workshop.id;
       state.activeVideoId = null;
       render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
     elements.workshopSwitch.appendChild(button);
   });
@@ -130,34 +184,104 @@ function renderWorkshopSwitch() {
 
 function renderToolbarMeta() {
   const workshop = activeWorkshop();
-  const available = workshop.videos.filter((entry) => entry.transcriptStatus === "present").length;
-  elements.toolbarMeta.textContent = `${workshop.videos.length} videos, ${available} transcripts available`;
+  const transcriptCount = workshop.videos.filter((entry) => entry.transcriptStatus === "present").length;
+  elements.toolbarMeta.textContent = `${workshop.videos.length} videos in scope • ${transcriptCount} transcripts ready`;
 }
 
-function noteParagraph(text) {
-  const p = document.createElement("p");
-  p.className = "card-note";
-  p.textContent = text;
-  return p;
+function renderTranscript(drawer, item, entry, video, workshopName) {
+  const transcriptButton = item.querySelector(".transcript-button");
+  const isOpen = state.activeVideoId === video.id && video.transcript;
+
+  transcriptButton.textContent = isOpen ? "Hide Transcript" : "Open Transcript";
+  transcriptButton.setAttribute("aria-expanded", String(Boolean(isOpen)));
+
+  if (!isOpen) {
+    drawer.hidden = true;
+    return;
+  }
+
+  drawer.hidden = false;
+  item.classList.add("is-open");
+
+  item.querySelector(".transcript-kicker").textContent = workshopName;
+  item.querySelector(".transcript-title").textContent = video.title;
+  item.querySelector(".transcript-meta").textContent = [
+    video.speakerOrSource,
+    video.duration,
+    video.transcriptFile,
+  ]
+    .filter(Boolean)
+    .join(" • ");
+
+  const transcriptNotes = item.querySelector(".transcript-notes");
+  transcriptNotes.innerHTML = "";
+  if (entry.notes) transcriptNotes.appendChild(makeTranscriptNote(entry.notes));
+  if (entry.matchNote) transcriptNotes.appendChild(makeTranscriptNote(entry.matchNote));
+
+  const transcriptBody = item.querySelector(".transcript-body");
+  transcriptBody.innerHTML = "";
+  video.transcript.blocks.forEach((block) => {
+    const wrapper = document.createElement("section");
+    wrapper.className = "transcript-block";
+
+    const speaker = document.createElement("div");
+    speaker.className = "speaker-label";
+    speaker.textContent = block.speaker;
+
+    const paragraph = document.createElement("p");
+    paragraph.className = "transcript-paragraph";
+    paragraph.textContent = block.text;
+
+    wrapper.appendChild(speaker);
+    wrapper.appendChild(paragraph);
+    transcriptBody.appendChild(wrapper);
+  });
+}
+
+function renderVideoRow(itemConfig, entry, video, workshopName) {
+  const item = elements.rowTemplate.content.firstElementChild.cloneNode(true);
+  const drawer = item.querySelector(".transcript-drawer");
+  const isTranscriptReady = video.transcriptStatus === "present" && Boolean(video.transcript);
+
+  item.querySelector(".video-kicker").textContent = entry.slideTitle;
+  item.querySelector(".video-title").textContent = itemConfig.label || video.title;
+  item.querySelector(".video-source").textContent = video.speakerOrSource || "Speaker/source not set";
+  item.querySelector(".duration-pill").textContent = video.duration || "Duration n/a";
+
+  const badges = item.querySelector(".video-badges");
+  if (itemConfig.optional) {
+    badges.appendChild(makeBadge("Optional", "optional"));
+  }
+  badges.appendChild(makeBadge(isTranscriptReady ? "Transcript ready" : "Transcript missing", isTranscriptReady ? "available" : "missing"));
+
+  const notes = item.querySelector(".video-notes");
+  if (entry.notes) notes.appendChild(makeNote(entry.notes));
+  if (entry.matchNote) notes.appendChild(makeNote(entry.matchNote));
+
+  const transcriptButton = item.querySelector(".transcript-button");
+  transcriptButton.disabled = !isTranscriptReady;
+  transcriptButton.addEventListener("click", () => {
+    state.activeVideoId = state.activeVideoId === video.id ? null : video.id;
+    render();
+  });
+
+  item.querySelector(".close-drawer").addEventListener("click", () => {
+    state.activeVideoId = null;
+    render();
+  });
+
+  renderTranscript(drawer, item, entry, video, workshopName);
+  return item;
 }
 
 function renderVideoList() {
   const workshop = activeWorkshop();
+  const sessions = sessionConfig[workshop.id] || [];
   elements.videoList.innerHTML = "";
 
-  if (!workshop.videos.length) {
-    const empty = document.createElement("div");
-    empty.className = "empty-state";
-    empty.textContent = "No videos found for this workshop.";
-    elements.videoList.appendChild(empty);
-    return;
-  }
-
-  const sessions = sessionConfig[workshop.id] || [];
   const grouped = new Map();
-
   workshop.videos.forEach((entry) => {
-    const video = videoForWorkshop(entry);
+    const video = byId(entry.videoId);
     grouped.set(sessionKeyForEntry(entry, video), { entry, video });
   });
 
@@ -167,125 +291,31 @@ function renderVideoList() {
 
     const header = document.createElement("div");
     header.className = "session-header";
-
-    const title = document.createElement("h2");
-    title.className = "session-title";
-    title.textContent = session.title;
-
-    const count = document.createElement("p");
-    count.className = "session-count";
+    header.innerHTML = `
+      <h2 class="session-title">${session.title}</h2>
+      <p class="session-count"></p>
+    `;
 
     const cards = document.createElement("div");
     cards.className = "session-cards";
 
-    let renderedCount = 0;
-
-    session.items.forEach((itemKey) => {
-      const match = grouped.get(itemKey);
+    let count = 0;
+    session.items.forEach((itemConfig) => {
+      const match = grouped.get(itemConfig.key);
       if (!match) return;
-      const { entry, video } = match;
-      renderedCount += 1;
-
-    const card = elements.cardTemplate.content.firstElementChild.cloneNode(true);
-    const isOpen = state.activeVideoId === video.id;
-    card.querySelector(".video-card-kicker").textContent = entry.slideTitle || "Workshop video";
-    card.querySelector("h3").textContent = video.title;
-    card.querySelector(".duration-pill").textContent = video.duration || "Duration n/a";
-    card.querySelector(".speaker-line").textContent = video.speakerOrSource || "Speaker/source not set";
-    card.querySelector(".slide-line").remove();
-    card.classList.toggle("is-open", isOpen);
-
-    const notes = card.querySelector(".card-notes");
-    if (entry.notes) notes.appendChild(noteParagraph(entry.notes));
-    if (entry.matchNote) notes.appendChild(noteParagraph(entry.matchNote));
-    if (video.transcriptStatus !== "present") {
-      notes.appendChild(noteParagraph("Transcript not yet available in the current dataset."));
-    }
-
-    const transcriptButton = card.querySelector(".transcript-button");
-    transcriptButton.disabled = video.transcriptStatus !== "present";
-    transcriptButton.textContent =
-      video.transcriptStatus === "present"
-        ? isOpen
-          ? "Hide Transcript"
-          : "Open Transcript"
-        : "Transcript Missing";
-    transcriptButton.addEventListener("click", () => {
-      state.activeVideoId = state.activeVideoId === video.id ? null : video.id;
-      render();
+      count += 1;
+      cards.appendChild(renderVideoRow(itemConfig, match.entry, match.video, workshop.name));
     });
 
-    const accordion = card.querySelector(".accordion-panel");
-    const closeButton = card.querySelector(".close-accordion-button");
-    const kicker = card.querySelector(".transcript-kicker");
-    const accordionTitle = card.querySelector(".accordion-title");
-    const transcriptMeta = card.querySelector(".transcript-meta");
-    const transcriptNotes = card.querySelector(".transcript-notes");
-    const transcriptBody = card.querySelector(".transcript-body");
-
-    if (isOpen && video.transcript) {
-      accordion.classList.remove("hidden");
-      kicker.textContent = workshop.name;
-      accordionTitle.textContent = video.title;
-      transcriptMeta.textContent = [
-        video.speakerOrSource,
-        video.duration,
-        entry.slideTitle,
-        video.transcriptFile,
-      ]
-        .filter(Boolean)
-        .join(" | ");
-
-      transcriptNotes.innerHTML = "";
-      if (entry.notes) transcriptNotes.appendChild(transcriptNote(entry.notes));
-      if (entry.matchNote) transcriptNotes.appendChild(transcriptNote(entry.matchNote));
-
-      transcriptBody.innerHTML = "";
-      video.transcript.blocks.forEach((block) => {
-        const wrapper = document.createElement("section");
-        wrapper.className = "transcript-block";
-
-        const label = document.createElement("div");
-        label.className = "speaker-label";
-        label.textContent = block.speaker;
-
-        const paragraph = document.createElement("p");
-        paragraph.className = "transcript-paragraph";
-        paragraph.textContent = block.text;
-
-        wrapper.appendChild(label);
-        wrapper.appendChild(paragraph);
-        transcriptBody.appendChild(wrapper);
-      });
-    } else {
-      accordion.classList.add("hidden");
-    }
-
-    closeButton.addEventListener("click", () => {
-      state.activeVideoId = null;
-      render();
-    });
-
-      cards.appendChild(card);
-    });
-
-    count.textContent = `${renderedCount} videos`;
-    header.appendChild(title);
-    header.appendChild(count);
+    header.querySelector(".session-count").textContent = `${count} videos`;
     section.appendChild(header);
     section.appendChild(cards);
     elements.videoList.appendChild(section);
   });
 }
 
-function transcriptNote(text) {
-  const p = document.createElement("p");
-  p.className = "transcript-note";
-  p.textContent = text;
-  return p;
-}
-
 function render() {
+  renderHeroStats();
   renderWorkshopSwitch();
   renderToolbarMeta();
   renderVideoList();
