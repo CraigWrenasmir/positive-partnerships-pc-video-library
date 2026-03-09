@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-09T03:12:15.363901+00:00",
+  "generatedAt": "2026-03-09T03:37:50.148498+00:00",
   "workshops": [
     {
       "id": "1-day-pc",
@@ -1008,11 +1008,19 @@
       "summary": null,
       "transcript": {
         "file": "Session 3 Slide 9 - Over and under sensitive.txt",
-        "plainText": "Speaker 1:\nSensory processing. We all have a metaphorical cup. Some of us have a big cup. Some of us have a small cup. The size of our cup represents how much sensory information we are comfortable with. The water represents the sensory information, sometimes called sensory input. Those with a big cup need lots of input to fill their cup, whereas those with a small cup only need a little input to fill their cup, and it can be easy for their cup to overflow. We can have a different sized cup for different senses. This means we can be comfortable with more sensory input from some senses than from others. How big is your cup? How big is your young person's cup?",
+        "plainText": "Sensory processing.\nAssume we all have a cup for holding sensory input. Some of us have a big cup. Some of us have a small cup. The size of our cup represents how much sensory information we are comfortable with, and the water represents this sensory information or sensory input.\n\nThose with a big cup need lots of input to fill their cup. Those with a small cup only need a little input to fill their cup, and it can be easy for their cup to overflow. We can have a different sized cup for different senses. This means we can be comfortable with more sensory input from some senses than from others.\n\nHow big is your cup? How big is your young person's cup?",
         "blocks": [
           {
-            "speaker": "Speaker 1",
-            "text": "Sensory processing. We all have a metaphorical cup. Some of us have a big cup. Some of us have a small cup. The size of our cup represents how much sensory information we are comfortable with. The water represents the sensory information, sometimes called sensory input. Those with a big cup need lots of input to fill their cup, whereas those with a small cup only need a little input to fill their cup, and it can be easy for their cup to overflow. We can have a different sized cup for different senses. This means we can be comfortable with more sensory input from some senses than from others. How big is your cup? How big is your young person's cup?"
+            "speaker": "Narration",
+            "text": "Sensory processing. Assume we all have a cup for holding sensory input. Some of us have a big cup. Some of us have a small cup. The size of our cup represents how much sensory information we are comfortable with, and the water represents this sensory information or sensory input."
+          },
+          {
+            "speaker": "Narration",
+            "text": "Those with a big cup need lots of input to fill their cup. Those with a small cup only need a little input to fill their cup, and it can be easy for their cup to overflow. We can have a different sized cup for different senses. This means we can be comfortable with more sensory input from some senses than from others."
+          },
+          {
+            "speaker": "Narration",
+            "text": "How big is your cup? How big is your young person's cup?"
           }
         ]
       }
