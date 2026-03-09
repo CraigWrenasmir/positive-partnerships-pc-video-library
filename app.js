@@ -382,9 +382,6 @@ function renderDrawer(item, entry, video, workshopName, itemConfig) {
     return;
   }
 
-  if (entry.notes) body.appendChild(makeTranscriptNote(entry.notes));
-  if (entry.matchNote) body.appendChild(makeTranscriptNote(entry.matchNote));
-
   if (!video.transcript) {
     body.appendChild(makeTranscriptNote("Transcript not yet loaded for this clip."));
     return;
