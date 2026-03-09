@@ -18,35 +18,13 @@
         </p>
       </header>
 
-      <main class="layout">
-        <section class="library-panel">
-          <div class="toolbar">
-            <div class="workshop-switch" id="workshop-switch"></div>
-            <div class="toolbar-meta" id="toolbar-meta"></div>
-          </div>
+      <main class="library-panel">
+        <div class="toolbar">
+          <div class="workshop-switch" id="workshop-switch"></div>
+          <div class="toolbar-meta" id="toolbar-meta"></div>
+        </div>
 
-          <div class="video-list" id="video-list"></div>
-        </section>
-
-        <aside class="transcript-panel" id="transcript-panel">
-          <div class="transcript-empty" id="transcript-empty">
-            <p>Select a transcript to view it here.</p>
-          </div>
-
-          <div class="transcript-view hidden" id="transcript-view">
-            <div class="transcript-header">
-              <div>
-                <p class="transcript-kicker" id="transcript-workshop"></p>
-                <h2 id="transcript-title"></h2>
-                <p class="transcript-meta" id="transcript-meta"></p>
-              </div>
-              <button class="ghost-button" id="close-transcript" type="button">Close</button>
-            </div>
-
-            <div class="transcript-notes" id="transcript-notes"></div>
-            <div class="transcript-body" id="transcript-body"></div>
-          </div>
-        </aside>
+        <div class="video-list" id="video-list"></div>
       </main>
     </div>
 
@@ -65,6 +43,18 @@
         <div class="card-actions">
           <button class="primary-button transcript-button" type="button">Transcript</button>
           <button class="secondary-button summary-button" type="button" disabled>Summary Soon</button>
+        </div>
+        <div class="accordion-panel hidden">
+          <div class="accordion-header">
+            <div>
+              <p class="transcript-kicker"></p>
+              <h4 class="accordion-title"></h4>
+              <p class="transcript-meta"></p>
+            </div>
+            <button class="ghost-button close-accordion-button" type="button">Close</button>
+          </div>
+          <div class="transcript-notes"></div>
+          <div class="transcript-body"></div>
         </div>
       </article>
     </template>
