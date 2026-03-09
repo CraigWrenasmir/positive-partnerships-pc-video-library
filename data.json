@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-09T01:04:04.719940+00:00",
+  "generatedAt": "2026-03-09T03:12:15.363901+00:00",
   "workshops": [
     {
       "id": "1-day-pc",
@@ -132,10 +132,10 @@
           "slideTitle": "What can sensory processing differences feel like? / Slide 7",
           "pdfFile": "1DAYPC_0002_Facilitator_Guide-3.pdf",
           "pdfPage": 101,
-          "transcriptStatus": "missing",
-          "transcriptFile": "",
+          "transcriptStatus": "present",
+          "transcriptFile": "Session 3 Slide 7 - Judy Endow Sensory Processing.txt",
           "notes": "",
-          "matchNote": ""
+          "matchNote": "Matched to Judy Endow transcript file added locally."
         },
         {
           "videoId": "PC-012",
@@ -325,10 +325,10 @@
           "slideTitle": "What can sensory processing differences feel like? / Slide 7",
           "pdfFile": "2DAYPC_0002_Facilitator_Guide-2.pdf",
           "pdfPage": 103,
-          "transcriptStatus": "missing",
-          "transcriptFile": "",
+          "transcriptStatus": "present",
+          "transcriptFile": "Session 3 Slide 7 - Judy Endow Sensory Processing.txt",
           "notes": "",
-          "matchNote": ""
+          "matchNote": "Matched to Judy Endow transcript file added locally."
         },
         {
           "videoId": "PC-012",
@@ -1544,13 +1544,22 @@
       "slideTitles": [
         "What can sensory processing differences feel like? / Slide 7"
       ],
-      "transcriptStatus": "missing",
-      "transcriptFile": "",
+      "transcriptStatus": "present",
+      "transcriptFile": "Session 3 Slide 7 - Judy Endow Sensory Processing.txt",
       "notes": "",
-      "matchNote": "",
+      "matchNote": "Matched to Judy Endow transcript file added locally.",
       "summaryStatus": "pending",
       "summary": null,
-      "transcript": null
+      "transcript": {
+        "file": "Session 3 Slide 7 - Judy Endow Sensory Processing.txt",
+        "plainText": "Speaker 1:\nI can also see a degree of beauty in things around me that I don't think neurotypical people often see. One example of that is I can see mist rising up from the surface of the earth, and I can see that interacting with light. If you've ever been on a lake early in the morning, you can see the mist rise off the water. Well, I can see that interaction of light and water particles anywhere. One of the things that's important to remember is that not everybody with autism will perceive things exactly the way I do.",
+        "blocks": [
+          {
+            "speaker": "Speaker 1",
+            "text": "I can also see a degree of beauty in things around me that I don't think neurotypical people often see. One example of that is I can see mist rising up from the surface of the earth, and I can see that interacting with light. If you've ever been on a lake early in the morning, you can see the mist rise off the water. Well, I can see that interaction of light and water particles anywhere. One of the things that's important to remember is that not everybody with autism will perceive things exactly the way I do."
+          }
+        ]
+      }
     },
     {
       "id": "PC-020",
@@ -1567,16 +1576,7 @@
       "matchNote": "Manual match: transcript filename says Slide 7, content matches Miguel Jiron clip.",
       "summaryStatus": "pending",
       "summary": null,
-      "transcript": {
-        "file": "Session 3 Slide 7 - What can sensory processing differences feel like.txt",
-        "plainText": "Speaker 1:\nI can also see a degree of beauty in things around me that I don't think neurotypical people often see. One example of that is I can see mist rising up from the surface of the earth, and I can see that interacting with light. If you've ever been on a lake early in the morning, you can see the mist rise off the water. Well, I can see that interaction of light and water particles anywhere. One of the things that's important to remember is that not everybody with autism will perceive things exactly the way I do.",
-        "blocks": [
-          {
-            "speaker": "Speaker 1",
-            "text": "I can also see a degree of beauty in things around me that I don't think neurotypical people often see. One example of that is I can see mist rising up from the surface of the earth, and I can see that interacting with light. If you've ever been on a lake early in the morning, you can see the mist rise off the water. Well, I can see that interaction of light and water particles anywhere. One of the things that's important to remember is that not everybody with autism will perceive things exactly the way I do."
-          }
-        ]
-      }
+      "transcript": null
     }
   ]
 }
