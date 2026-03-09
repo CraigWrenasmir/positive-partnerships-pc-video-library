@@ -137,6 +137,40 @@ h1 {
 }
 
 .video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.session-group {
+  padding: 18px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(247, 242, 250, 0.92));
+  border: 1px solid rgba(51, 0, 68, 0.08);
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(51, 0, 68, 0.1);
+}
+
+.session-title {
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  color: var(--brand-plum);
+}
+
+.session-count {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.session-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 18px;
@@ -311,5 +345,10 @@ h1 {
 @media (max-width: 980px) {
   .transcript-body {
     max-height: none;
+  }
+
+  .session-header {
+    align-items: start;
+    flex-direction: column;
   }
 }

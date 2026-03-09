@@ -4,6 +4,79 @@ const state = {
   activeVideoId: null,
 };
 
+const sessionConfig = {
+  "1-day-pc": [
+    {
+      title: "Session 1: Welcome and Introductions",
+      items: ["Language and Autism", "Having a say"],
+    },
+    {
+      title: "Session 2: Diversity of autism",
+      items: [
+        "Strengths and interests",
+        "Strengths and interests high school",
+        "Connections to culture and community",
+        "Communication",
+        "Executive Functioning",
+        "Dean",
+        "Self-care and independence skills",
+        "Strategies",
+      ],
+    },
+    {
+      title: "Session 3: Sensory Processing",
+      items: [
+        "What can sensory processing differences feel like",
+        "Judy Endow: Sensory processing",
+        "Over and under sensitive",
+        "Sensory processing and context",
+        "Sensory solutions and strategies",
+      ],
+    },
+    {
+      title: "Session 4: Working in Partnerships",
+      items: ["Disability Standards for Education", "Moving Forward"],
+    },
+  ],
+  "2-day-pc": [
+    {
+      title: "Session 1: Welcome and Introductions",
+      items: ["Language and Autism", "Having a say"],
+    },
+    {
+      title: "Session 2: Diversity of autism",
+      items: [
+        "Strengths and interests",
+        "Strengths and interests high school",
+        "Connections to culture and community",
+        "Communication",
+        "Executive Functioning",
+        "Dean",
+        "Self-care and independence skills",
+        "Strategies",
+      ],
+    },
+    {
+      title: "Session 3: Sensory Processing",
+      items: [
+        "What can sensory processing differences feel like",
+        "Judy Endow: Sensory Processing",
+        "Over and under sensitive",
+        "Sensory processing and context",
+        "Sensory solutions and strategies",
+      ],
+    },
+    {
+      title: "Session 5: Understanding Behaviour",
+      items: ["Dan Siegels Hand Model of the Brain", "Making observations"],
+    },
+    {
+      title: "Session 6: Working in Partnerships",
+      items: ["Disability Standards for Education", "DSE roles and expectations", "Moving Forward"],
+    },
+  ],
+};
+
 const elements = {
   workshopSwitch: document.getElementById("workshop-switch"),
   toolbarMeta: document.getElementById("toolbar-meta"),
@@ -21,6 +94,22 @@ function activeWorkshop() {
 
 function videoForWorkshop(entry) {
   return byId(entry.videoId);
+}
+
+function sessionKeyForEntry(entry, video) {
+  if (video.title === "Strengths and interests" && /slide 13/i.test(entry.slideTitle)) {
+    return "Strengths and interests high school";
+  }
+  if (video.title === "Executive Functioning" && /dean/i.test(video.speakerOrSource)) {
+    return "Dean";
+  }
+  if (
+    video.title === "What can sensory processing differences feel like" &&
+    /judy endow/i.test(video.speakerOrSource)
+  ) {
+    return "Judy Endow: Sensory Processing";
+  }
+  return video.title;
 }
 
 function renderWorkshopSwitch() {
@@ -64,15 +153,46 @@ function renderVideoList() {
     return;
   }
 
+  const sessions = sessionConfig[workshop.id] || [];
+  const grouped = new Map();
+
   workshop.videos.forEach((entry) => {
     const video = videoForWorkshop(entry);
+    grouped.set(sessionKeyForEntry(entry, video), { entry, video });
+  });
+
+  sessions.forEach((session) => {
+    const section = document.createElement("section");
+    section.className = "session-group";
+
+    const header = document.createElement("div");
+    header.className = "session-header";
+
+    const title = document.createElement("h2");
+    title.className = "session-title";
+    title.textContent = session.title;
+
+    const count = document.createElement("p");
+    count.className = "session-count";
+
+    const cards = document.createElement("div");
+    cards.className = "session-cards";
+
+    let renderedCount = 0;
+
+    session.items.forEach((itemKey) => {
+      const match = grouped.get(itemKey);
+      if (!match) return;
+      const { entry, video } = match;
+      renderedCount += 1;
+
     const card = elements.cardTemplate.content.firstElementChild.cloneNode(true);
     const isOpen = state.activeVideoId === video.id;
     card.querySelector(".video-card-kicker").textContent = entry.slideTitle || "Workshop video";
     card.querySelector("h3").textContent = video.title;
     card.querySelector(".duration-pill").textContent = video.duration || "Duration n/a";
     card.querySelector(".speaker-line").textContent = video.speakerOrSource || "Speaker/source not set";
-    card.querySelector(".slide-line").textContent = `${entry.pdfFile}, page ${entry.pdfPage}`;
+    card.querySelector(".slide-line").remove();
     card.classList.toggle("is-open", isOpen);
 
     const notes = card.querySelector(".card-notes");
@@ -146,7 +266,15 @@ function renderVideoList() {
       render();
     });
 
-    elements.videoList.appendChild(card);
+      cards.appendChild(card);
+    });
+
+    count.textContent = `${renderedCount} videos`;
+    header.appendChild(title);
+    header.appendChild(count);
+    section.appendChild(header);
+    section.appendChild(cards);
+    elements.videoList.appendChild(section);
   });
 }
 
